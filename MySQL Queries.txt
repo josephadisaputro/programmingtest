@@ -1,0 +1,35 @@
+CREATE DATABASE teravintestdb;
+
+use teravintestdb
+
+CREATE TABLE users(
+    Nama varchar(255),
+    Nohp int,
+    Email varchar(255),
+    Alamat varchar(255)
+);
+
+SELECT COUNT(*) FROM users;
+
+INSERT INTO users (Nama , Nohp , Email , Alamat)
+VALUES (value1, value2, value3, ...); 
+
+INSERT INTO users (Nama , Nohp , Email , Alamat) VALUES('test 2', '12365409876', 'test2@test.com', 'test 2 alamat')
+
+ALTER TABLE users
+MODIFY Nohp BIGINT; 
+
+SELECT Nama, Email FROM users WHERE Nama LIKE '%1%'
+
+SELECT Nama, Email FROM users
+ORDER BY Nama DESC;
+
+mysqldump -u root -p teravintestdb > teravintestdb.sql
+
+mysqldump.exe –e –u root -p edihub4265 -h localhost teravintestdb > teravintestdb.sql
+
+mysqldump --add-drop-table -u root@localhost -p edihub4265 teravintestdb > teravintestdb.sql
+
+mysqldump --user=root -p[edihub4265] --host=192.168.43.166 --tab=. teravintestdb > teravintestdb.sql
+
+mysqldump -u root -p teravintestdb > C:\Users\josep\Desktop\teravintestdb.sql

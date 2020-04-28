@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Teravin Test - Yusuf Adisaputro</title>
+</head>
+<style>
+</style>
+<body>
+    <h1>List User</h1>
+    <% if(events == 'nothing') { %>
+        <%- include('nothing') -%>
+    <% }else{ %>
+        <form action="/search" method="GET">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Nama</label>
+                </div>
+                <div class="input-group-prepend">
+                    <input type="text" name="nama" required> 
+                </div>
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="submit">SEARCH</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-dark">
+            <tr>
+                <% fields.forEach( field => { %>
+                    <th>
+                        <ul class="list-group list-group-horizontal">
+                            <li class="list-group-item" style="color:black !important">
+                                <%= field.name %>
+                            </li>
+                            <li class="list-group-item">
+                                <form action="/sort_up_<%= field.name %>" method="GET">
+                                    <button type="submit">↑</button>
+                                </form>
+                            </li>
+                            <li class="list-group-item">
+                                <form action="/sort_down_<%= field.name %>" method="GET">
+                                    <button type="submit">↓</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </th>
+                <% }) %>
+            </tr>
+            <% events.forEach( event => { %>
+                <tr>
+                    <td><%= event.Nama %></td>
+                    <td><%= event.Email %></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+
+    <form action="/create" method="POST">
+        <button type="submit">ADD</button>
+    </form>
+
+</body>
+
+</html>

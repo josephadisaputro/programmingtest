@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Teravin Test - Yusuf Adisaputro</title>
+</head>
+<style>
+</style>
+<body>
+    <h1>Create User</h1>
+
+    <form action="/createuser" method="GET">
+        <div class="form-group">
+            <label>Nama</label>
+            <input class="form-control" type="text" name="nama" id="nama" maxlength="50" required> <br>
+            <label>No. Hp</label>
+            <input class="form-control" type="number" name="phone" placeholder="1234567890" id="phone" min="1000000000" required> <br> 
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" id="email" required> <br>
+            <label>alamat</label>
+            <div class="input-group">
+                <input class="form-control" type="text" name="alamat" id="alamat" required> 
+                <input class="btn btn-primary" type="button" onclick="addfunc()" value="+"></input> <br>
+            </div>
+            <div id="addition"></div>
+            <br>
+            <button class="btn btn-primary" onclick="check()" type="submit">CREATE</button>
+        </div>
+    </form>
+    <form action="/" method="GET">
+        <button type="submit">BACK</button>
+    </form>
+
+</body>
+<script>
+var fieldinputcounter = 0;
+function addfunc() {
+    fieldinputcounter++;
+
+    var node0 = document.createElement("div");
+    node0.setAttribute("class", "input-group");
+
+    var node = document.createElement("input");
+    node.setAttribute("name", "alamat");
+    node.setAttribute("id", fieldinputcounter);
+    node.setAttribute("class", "form-control");
+    document.getElementById("addition").appendChild(node);
+    var node2 = document.createElement("button");
+    node2.setAttribute("class", "btn btn-primary");
+    var textnode = document.createTextNode("-");
+    node2.appendChild(textnode);
+    node2.setAttribute("onclick", "removefunc("+fieldinputcounter+")");
+    node2.setAttribute("id", fieldinputcounter);
+    var node3 = document.createElement("br");
+    node3.setAttribute("id", fieldinputcounter);
+
+    node0.appendChild(node);
+    node0.appendChild(node2);
+    node0.appendChild(node3);
+
+    document.getElementById("addition").appendChild(node0);
+    //document.getElementById("addition").appendChild(node2);
+    //document.getElementById("addition").appendChild(node3); 
+    
+    count = fieldinputcounter;
+    while(count>0){
+        document.getElementById(count).required = true;
+        count--;
+    }
+}
+
+function removefunc(id) {
+    count = 0;
+    while(count<3){
+        var elmnt = document.getElementById(id);
+        elmnt.remove();
+        count++;
+    }
+}
+
+function check(){
+    if(document.getElementById("nama").value == '' || document.getElementById("phone").value == '' || document.getElementById("email").value == '' || document.getElementById("alamat").value == ''){
+        alert("Semua Field Harus di Isi!");
+    }
+}
+</script>
+
+</html>
