@@ -19,7 +19,7 @@ AND
 var pooltest = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "edihub4265",
+    password: "",
     database: "teravintestdb"
 })
 
