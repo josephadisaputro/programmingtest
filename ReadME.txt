@@ -1,4 +1,4 @@
-Firstly this test was done by Yusuf Adisaputro for PT. Teravin Technovations
+Firstly this test was done by Yusuf Adisaputro
 
 1. cmd > cd desktop > mkdir teravin 
 2. download all from git hub
